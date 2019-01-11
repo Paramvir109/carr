@@ -10,7 +10,7 @@ module.exports = {
     create: async (req, res) => {
         let user = await User.create(req.body).fetch();
         res.send(user);
-        // return ResponseService.json(201, res, 'new user created', user);
+        
     },
 
 };
