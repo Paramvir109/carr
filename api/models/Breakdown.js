@@ -16,6 +16,10 @@ module.exports = {
     ProblemType : {
       type : 'string',
       required : true
+    },
+    Location : {
+      type : 'string',
+      required : true
     }
   },
 

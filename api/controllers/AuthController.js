@@ -11,7 +11,7 @@ module.exports = {
         const password = req.body.password
 
         let validated = await validate(res, email, password)
-        if(validated) login(res, email, password)
+        if(validated) login(req,res, email, password)
     }
 
 };
@@ -23,7 +23,7 @@ let validate = (res, email, password) => {
     return true
 }
 
-let login = async (res, email, password) => {
+let login = async (req,res, email, password) => {
     let user = await User.findOne({ email: email })
     if (!user) return res.send('User not found')
 
@@ -31,5 +31,6 @@ let login = async (res, email, password) => {
     if(!credentialsAreTrue) return res.send('Password is incorrect')
     
     let data = { jwt: JwtService.issue({ id: user.id }), isActive : user.isActive }
+    User.subscribe(req.socket)
     return res.send(data)
 }
