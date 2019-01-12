@@ -9,10 +9,10 @@ module.exports = {
 
   attributes: {
     //one-one
-    user : {
-      model : 'User',
-      unique : true
-   },
+  //   user : {
+  //     model : 'User',
+  //     unique : true
+  //  },
    shopName : {
      type : 'string',
    }

@@ -30,6 +30,6 @@ let login = async (res, email, password) => {
     let credentialsAreTrue = await User.comparePassword(password, user)
     if(!credentialsAreTrue) return res.send('Password is incorrect')
     
-    let data = { jwt: JwtService.issue({ id: user.id }) }
+    let data = { jwt: JwtService.issue({ id: user.id }), isActive : user.isActive }
     return res.send(data)
 }

@@ -9,15 +9,15 @@ module.exports = {
 
   attributes: {
     //many-many
-   vehicles : {
-      collection : 'vehicle',
-      via : 'owner'
+   // vehicles : {
+   //    collection : 'vehicle',
+   //    via : 'owner'
 
-   },
-   user : {
-      model : 'User',
-      unique : true
-   }
+   // },
+   // user : {
+   //    model : 'User',
+   //    unique : true
+   // }
     
   },
 

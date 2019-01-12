@@ -12,14 +12,10 @@ module.exports = {
   tableName: 'users',
 
   attributes: {
-
-    //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
-    //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
-    //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    name: {
-      type: 'string',
-      required: true,
-      maxLength: 200
+    //many-to-many
+    vehicles : {
+      collection : 'vehicle',
+      via : 'owner'
     },
 
     email: {
@@ -39,6 +35,10 @@ module.exports = {
       type: 'boolean',
       defaultsTo: false
     },
+    isActive : {
+      type : 'boolean',
+      defaultsTo : false,
+    }
   },
 
   customToJSON: function () {

@@ -11,10 +11,10 @@ module.exports = {
 
 
 
-    Breakdown: { type: 'string' },
+    // Breakdown: { type: 'string' },
     //many many
     owner: { 
-      collection: 'User',
+      collection: 'user',
       via : 'vehicles'
     
     },
@@ -22,11 +22,14 @@ module.exports = {
       type : 'string',
       required : true
     },
-    modelName : {
+    ModelName : {
+      type : 'string',
+      required : true
+    },
+    LicenseNumber : {
       type : 'string',
       required : true
     }
- 
 
   },
 

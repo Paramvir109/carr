@@ -17,7 +17,7 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': 'isAuth',
+  '*': ['isAuth', 'isActive'],
 
   // 'ExamController': {
   //   'create': ['isAuthorized', 'examPolicy'],
