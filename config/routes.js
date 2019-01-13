@@ -11,13 +11,16 @@
 module.exports.routes = {
 
     'POST /signup': 'UserController.create',
-    'POST /login': 'AuthController.login',
+    'POST /signin': 'AuthController.signin',
     'GET /dashboard': 'HomeController.dashboard',
+    'GET /me': 'UserController.me',
+    'POST /vehicle' : 'VehicleController.create',
     'POST /user/vehicle/add' : 'VehicleController.addVehicle',
-    'POST /test' : 'VehicleController.create',
     'DELETE /user/vehicle/remove' : 'VehicleController.remove',
     'GET /user/vehicle/get' : 'VehicleController.getVehicles',
-    'POST /user/vehicle/breakdown' : 'BreakdownController.create'
+    'POST /breakdown': 'BreakdownCotroller.create',
+    'GET /me/vehicles': 'VehicleController.index',
+
     
 
 

@@ -24,6 +24,9 @@ module.exports = {
     remove : async (req, res) => {
        let vehicle = await User.removeFromCollection(req.me.id, 'vehicles').members([req.body.id]);
        return res.send(200, 'OK')
+    },
+    index: async (req, res) => {
+        return res.ok();
     }
 };
 

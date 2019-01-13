@@ -6,9 +6,15 @@
  */
 
 module.exports = {
-  create : async (req, res) => {
-      let breakdown = await Breakdown.create(req.body).fetch()
-      return res.send({breakdown})
+ 
+    create: async (req, res) => {
+      if (!req.isSocket) return res.badRequest();
+
+
+      sails.sockets.join(req, 'vendors');
+
+      sails.sockets.broadcast('vendors', 'hello', { howdy: 'hi there!'}, req);
+      return res.ok()
   }
 };
 

@@ -25,12 +25,13 @@ module.exports.policies = {
   //   'update': ['isAuthorized', 'examPolicy'],
   //   'destroy': ['isAuthorized', 'examPolicy'],
   // },
-  'AuthController': {
-    '*': true
+  'UserController': {
+    'create': true,
+    'me': 'isAuth'
   },
 
-  'UserController': {
-    'create': true
+  'AuthController': {
+    '*': true
   }
 
 

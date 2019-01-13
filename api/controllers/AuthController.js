@@ -6,31 +6,30 @@
  */
 
 module.exports = {
-    login: async (req, res) => {
+    signin: async (req, res) => {
         const email = req.body.email
         const password = req.body.password
 
         let validated = await validate(res, email, password)
-        if(validated) login(req,res, email, password)
+        if(validated) login(res, email, password)
     }
 
 };
 
 
 let validate = (res, email, password) => {
-    if (!email) return res.send('Email is required');
-    if (!password) return res.send('Password is required');
+    if (!email) return ResponseService.json(401, res, 'Email is required')
+    if (!password) return ResponseService.json(401, res, 'Password is required')
     return true
 }
 
-let login = async (req,res, email, password) => {
+let login = async (res, email, password) => {
     let user = await User.findOne({ email: email })
-    if (!user) return res.send('User not found')
+    if (!user) return ResponseService.json(404, res, 'User not found')
 
     let credentialsAreTrue = await User.comparePassword(password, user)
-    if(!credentialsAreTrue) return res.send('Password is incorrect')
+    if(credentialsAreTrue === false) return ResponseService.json(200, res, 'Password is incorrect', null, false)
     
-    let data = { jwt: JwtService.issue({ id: user.id }), isActive : user.isActive }
-    User.subscribe(req.socket)
-    return res.send(data)
+    let data = { jwt: JwtService.issue({ id: user.id }) }
+    return ResponseService.json(200, res, 'Logged in', data, true)
 }

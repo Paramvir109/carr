@@ -17,6 +17,11 @@ module.exports = {
       collection : 'vehicle',
       via : 'owner'
     },
+    name: {
+      type: 'string',
+      required: true,
+      maxLength: 200
+    },
 
     email: {
       type: 'string',
